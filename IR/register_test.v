@@ -10,8 +10,8 @@ module register_test;
           .out  ( out ),
           .data ( data),
           .clk  ( clk ),
-          .rst_n(rst_n),
-          .clk  ( clk )
+          .load (load ),
+          .rst_n(rst_n)
      );
      //Instantiate clock
      clock u_clock (
@@ -20,8 +20,8 @@ module register_test;
      
      //Monitor signals
      initial begin
-     $timeforamt(-9, 1, "ns", 9);
-     $monitor("time = %t , clk = %b , data = %h , load = %b , out = %h ", $stime , $time , data , load , out);
+     $timeformat(-9, 1, "ns", 9);
+     $monitor("time = %t , clk = %b , data = %h , load = %b , out = %h ", $stime , clk , data , load , out);
      $dumpvars(2 , register_test);
      end
 

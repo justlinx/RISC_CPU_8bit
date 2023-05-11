@@ -23,7 +23,7 @@ initial begin
 end
 
 initial begin
-     $timeforamt(-9, 1, "ns", 9);
+     $timeformat(-9, 1, "ns", 9);
      $monitor("time = %t , data = %h , clk = %b , rst_n = %b , load = %b , cnt = %b ", $stime , data , clk , rst_n , load , cnt);
      $dumpvars(2 , counter_test);
 end
