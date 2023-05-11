@@ -18,5 +18,6 @@ initial begin
      #5   sel = 0 ; a = { `width{1'b1} } ; b = { `width{1'b0} } ;
      #5   sel = 1 ; a = { `width{1'b0} } ; b = { `width{1'b1} } ;
      #5   sel = 1 ; a = { `width{1'b1} } ; b = { `width{1'b0} } ;
+     $finish;
 end
 endmodule
