@@ -17,12 +17,14 @@ module register_test;
      clock u_clock (
           .clk (clk)
      );
+     
      //Monitor signals
      initial begin
      $timeforamt(-9, 1, "ns", 9);
      $monitor("time = %t , clk = %b , data = %h , load = %b , out = %h ", $stime , $time , data , load , out);
      $dumpvars(2 , register_test);
-end
+     end
+
      //Apply stimulus 
      initial begin
      //To prevent the races of clock/data,don't tansition the stimulus on the active(posedge)edge of the clock
@@ -47,6 +49,6 @@ end
      load = 0;
 
      @ (negedge clk )//Terminate simulation
-     $finish
+     $finish;
      end
 endmodule
