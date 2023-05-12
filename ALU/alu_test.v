@@ -44,7 +44,7 @@ module alu_test();
      task expect;
      input [8:0] expects;
           begin
-               $display ("%t    %b  %b  %b  %b  %b", $time, opcode, data, accum, out, zero);
+               $display ("%t   %b    %b    %b     %b       %b", $time, opcode, data, accum, out, zero);
                if ( {zero, out} !== expects ) begin
                     $display ("At time %t: zero is %b and should be %b , out is %b and should be %b", $time, zero, expects[8], out, expects[7:0]);
                     $display ("Test failed");
