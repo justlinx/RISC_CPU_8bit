@@ -54,19 +54,19 @@ module alu_test();
      endtask
      //Apply stimulus
      initial begin
-          { opcode, accum, data } = { PASS0, 'h00, 'hFF }; #(`DELAY) expect ({1'b1,accum});
-          { opcode, accum, data } = { PASS0, 'h55, 'hFF }; #(`DELAY) expect ({1'b0,accum});
-          { opcode, accum, data } = { PASS1, 'h55, 'hFF }; #(`DELAY) expect ({1'b0,accum});
-          { opcode, accum, data } = { PASS1, 'hCC, 'hFF }; #(`DELAY) expect ({1'b0,accum});
-          { opcode, accum, data } = { ADD,   'h33, 'hAA }; #(`DELAY) expect ({1'b0,accum+data});
-          { opcode, accum, data } = { AND,   'h0F, 'hAA }; #(`DELAY) expect ({1'b0,accum&data});
-          { opcode, accum, data } = { XOR,   'hF0, 'h55 }; #(`DELAY) expect ({1'b0,accum^data});
-          { opcode, accum, data } = { PASSD, 'h00, 'hAA }; #(`DELAY) expect ({1'b1,data});
-          { opcode, accum, data } = { PASSD, 'h00, 'hCC }; #(`DELAY) expect ({1'b1,data});
-          { opcode, accum, data } = { PASSD, 'hFF, 'h00 }; #(`DELAY) expect ({1'b0,data});
-          { opcode, accum, data } = { PASS6, 'hFF, 'hF0 }; #(`DELAY) expect ({1'b0,accum});
-          { opcode, accum, data } = { PASS7, 'hCC, 'h0F }; #(`DELAY) expect ({1'b0,accum});
-          $display ("Test failed");
+          { opcode, accum, data } = { PASS0, 8'h00, 8'hFF }; #(`DELAY) expect ({1'b1,accum});
+          { opcode, accum, data } = { PASS0, 8'h55, 8'hFF }; #(`DELAY) expect ({1'b0,accum});
+          { opcode, accum, data } = { PASS1, 8'h55, 8'hFF }; #(`DELAY) expect ({1'b0,accum});
+          { opcode, accum, data } = { PASS1, 8'hCC, 8'hFF }; #(`DELAY) expect ({1'b0,accum});
+          { opcode, accum, data } = { ADD,   8'h33, 8'hAA }; #(`DELAY) expect ({1'b0,accum+data});
+          { opcode, accum, data } = { AND,   8'h0F, 8'hAA }; #(`DELAY) expect ({1'b0,accum&data});
+          { opcode, accum, data } = { XOR,   8'hF0, 8'h55 }; #(`DELAY) expect ({1'b0,accum^data});
+          { opcode, accum, data } = { PASSD, 8'hAA, 8'h00 }; #(`DELAY) expect ({1'b1,data});
+          { opcode, accum, data } = { PASSD, 8'h00, 8'hCC }; #(`DELAY) expect ({1'b0,data});
+          { opcode, accum, data } = { PASSD, 8'hFF, 8'h00 }; #(`DELAY) expect ({1'b1,data});
+          { opcode, accum, data } = { PASS6, 8'hFF, 8'hF0 }; #(`DELAY) expect ({1'b0,accum});
+          { opcode, accum, data } = { PASS7, 8'hCC, 8'h0F }; #(`DELAY) expect ({1'b0,accum});
+          $display ("Test passed");
           $finish;
      end
 

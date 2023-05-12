@@ -30,4 +30,12 @@ module alu(
           endcase             
      end
 
+     always @(*) begin
+          if (out == 0) begin
+               zero = 1'b1 ;
+          end else begin
+               zero = 1'b0 ;
+          end
+     end
+
 endmodule
