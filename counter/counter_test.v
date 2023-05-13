@@ -1,17 +1,18 @@
 `timescale 1ns / 1ns
 
-module counter_mux;
+module counter_test;
 
 wire [4:0]cnt;
 reg  [4:0]data;
 reg  rst_n;
 reg  clk;
+reg  load;
 
 counter c1(
      .clk(clk),
      .rst_n(rst_n),
-     .data(data)
-     .load(load)
+     .data(data),
+     .load(load),
      .cnt(cnt)
 );
 
@@ -31,7 +32,7 @@ end
 task expect;
 input [4:0] expects;
      if( cnt != expects ) begin
-          $display ("At time %t cnt is %b and should be %b and should be %b", $time ,cnt , expects);
+          $display ("At time %t cnt is %b and should be %b", $time ,cnt , expects);
           $display ( "TEST FAILED") ;
      end
 endtask
@@ -39,17 +40,17 @@ endtask
 initial begin 
      @(negedge clk );
      //RESET
-     {rst_n , load , data} = 7'b0_x_xxxxx; @(negedge clk ) expects (5'h00);
+     {rst_n , load , data} = 7'b0_x_xxxxx; @(negedge clk ) expect (5'h00);
      //LOAD 1D
-     {rst_n , load , data} = 7'b1_1_11101; @(negedge clk ) expects (5'h1D);
+     {rst_n , load , data} = 7'b1_1_11101; @(negedge clk ) expect (5'h1D);
      //COUNT +5,ALSO TEST OVERFLOW
      {rst_n , load , data} = 7'b1_0_11101;
      repeat(5) @(negedge clk ) ;
-     expects (5'h02);
+     expect (5'h02);
      //LOAD 1F
-     {rst_n , load , data} = 7'b1_1_11111; @(negedge clk ) expects (5'h1F);
+     {rst_n , load , data} = 7'b1_1_11111; @(negedge clk ) expect (5'h1F);
      //RESET
-     {rst_n , load , data} = 7'b0_x_xxxxx; @(negedge clk ) expects (5'h00);
+     {rst_n , load , data} = 7'b0_x_xxxxx; @(negedge clk ) expect (5'h00);
 
      $display("TEST PASSED");
      $finish;

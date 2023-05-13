@@ -1,5 +1,5 @@
 `define width 8
-`timescale 1ns/1ps
+`timescale 1ns / 1ns
 
 module mux_test;
 
@@ -7,7 +7,7 @@ reg  [`width-1:0] a, b ;
 wire [`width-1:0] out;
 reg  sel;
 
-scale_mux mux1(.a(a), .b(b), .out(out), .sel(sel));
+scale_mux #(`width) mux1(.a(a), .b(b), .out(out), .sel(sel));
 
 initial begin
 //显示结果，并且存到SHM数据表中

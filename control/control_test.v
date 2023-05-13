@@ -59,7 +59,7 @@ module control_test();
           $display ( "--------- -- -- ----- ----- ----- ------ ---- ------ --- ------ ---- -----" ) ; 
           // $shm_open ( "waves.shm" ) ;
           // $shm_probe ( "A" ) ; 
-          // $shm_probe ( c1.state ) ; 
+          // $shm_probe ( c0.state ) ; 
           $dumpvars(0,control_test); 
      end 
 
@@ -79,11 +79,11 @@ module control_test();
      // Check response 
      initial  begin 
      $readmemb ( "response.pat", response ) ; 
-     @ ( posedge rst_ ) 
+     @ ( posedge rst_n ) 
      for ( j=0; j<=127; j=j+1 ) 
      @ ( negedge clk ) begin 
           $display("%t %b %b %b %b %b %b %b %b %b %b %b %b", 
-               $time,rd,wr,ld_ir,ld_ac,ld_pc,inc_pc,halt,data_e,sel,opcode,zero,c1.state ) ; 
+               $time,rd,wr,ld_ir,ld_ac,ld_pc,inc_pc,halt,data_e,sel,opcode,zero,c0.state ) ; 
           if ( {rd,wr,ld_ir,ld_ac,ld_pc,inc_pc,halt,data_e,sel} !== response[j] ) 
           begin : blk 
                reg [8:0] r; 

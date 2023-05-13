@@ -6,7 +6,7 @@ module mem_test();
 reg  read;
 reg  write;
 reg  [4:0] addr;
-reg  [7:0] data_reg;
+reg  [7:0] dreg;
 wire [7:0] data = (!read) ? dreg : 8'hz ;
 
 integer i;

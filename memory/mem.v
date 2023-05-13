@@ -2,7 +2,7 @@
 
 module mem (
      input     [4:0]addr,
-     input     [4:0]data,
+     input     [7:0]data,
      input     read,
      input     write
 );

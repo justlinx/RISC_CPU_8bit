@@ -35,7 +35,7 @@ module control(
 
      always @(negedge clk) begin//建议使用格雷码编码，否则综合不过，独热码也可以，但综合效率低
           case(state) 
-               3'b000 : next_state <= 3'b001; 
+               3'b000 : next_state <= 3'b001 ; 
                3'b001 : next_state <= 3'b011 ; 
                3'b011 : next_state <= 3'b010 ; 
                3'b010 : next_state <= 3'b110 ; 
@@ -95,7 +95,18 @@ module control(
                     ld_ac  <= 1'b0; 
                     wr     <= 1'b0; 
                end
-               3'b110:begin 
+               3'b110:begin
+                    sel    <= 1'b1; 
+                    rd     <= 1'b1;
+                    ld_ir  <= 1'b1; 
+                    inc_pc <= 1'b0; 
+                    halt   <= 1'b0; 
+                    ld_pc  <= 1'b0; 
+                    data_e <= 1'b0; 
+                    ld_ac  <= 1'b0; 
+                    wr     <= 1'b0; 
+               end
+               3'b111:begin 
                     sel    <= 1'b0; 
                     rd     <= 1'b0; 
                     ld_ir  <= 1'b0; 
@@ -106,7 +117,7 @@ module control(
                     ld_ac  <= 1'b0; 
                     wr     <= 1'b0; 
                end  
-               3'b111:begin 
+               3'b101:begin 
                     sel    <= 1'b0; 
                     rd     <= alu_op; 
                     ld_ir  <= 1'b0; 
@@ -125,10 +136,9 @@ module control(
                     halt   <= 1'b0; 
                     ld_pc  <= opcode==`JMP;
                     data_e <= !alu_op;
-                    ld_ac  <= alu_op; 
-                    wr     <= opcode==`STO;
+                    ld_ac  <= 1'b0; 
+                    wr     <= 1'b0;
                end
-          default:;
           endcase
      end
 endmodule
