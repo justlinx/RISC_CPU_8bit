@@ -1,5 +1,5 @@
 `timescale 1ns / 1ns
-module clkgen(
+module clock(
      output reg clk
 );
 initial begin
