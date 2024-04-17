@@ -59,48 +59,56 @@ module register (
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[0]  ),
-          .q    (out[0])
+          .q    (out[0]),
+          .q_   ()
      );
      dffr d1(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[1]  ),
-          .q    (out[1])
+          .q    (out[1]),
+          .q_   ()
      );
      dffr d2(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[2]  ),
-          .q    (out[2])
+          .q    (out[2]),
+          .q_   ()
      );
      dffr d3(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[3]  ),
-          .q    (out[3])
+          .q    (out[3]),
+          .q_   ()
      );
      dffr d4(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[4]  ),
-          .q    (out[4])
+          .q    (out[4]),
+          .q_   ()
      );
      dffr d5(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[5]  ),
-          .q    (out[5])
+          .q    (out[5]),
+          .q_   ()
      );
      dffr d6(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[6]  ),
-          .q    (out[6])
+          .q    (out[6]),
+          .q_   ()
      );
      dffr d7(
           .clk  (clk   ),
           .rst_n(rst_n ),
           .d    (n1[7]  ),
-          .q    (out[7])
+          .q    (out[7]),
+          .q_   ()
      );     
 endmodule
