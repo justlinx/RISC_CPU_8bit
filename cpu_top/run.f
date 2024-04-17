@@ -4,7 +4,7 @@
   ../register/register.v
   ../mux/scale_mux.v
   ../counter/counter.v
-  ../ALU/alu.v
+  ../alu/alu.v
   ../memory/mem.v
   ../control/control.v
   -y cells_lib

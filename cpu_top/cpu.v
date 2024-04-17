@@ -77,7 +77,7 @@ module cpu(
           .rst_n(rst_n)
      );
 
-     clkgen clk(               //时钟源
+     clock clk(               //时钟源
           .clk(clock)
      );
 
